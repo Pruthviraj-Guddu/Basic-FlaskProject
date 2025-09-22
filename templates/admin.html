@@ -1,0 +1,45 @@
+<!-- D:\Documents\Drexel\CS530-ProjectCars\templates\admin.html -->
+
+{% extends 'base.html' %}
+{% set active = "Admin" %}
+
+{% block title %}
+Admin - Davangere Motors
+{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+    <div class="container">
+        <h1 class="text-center">Admin Dashboard</h1>
+        <h2>Contacted Bookings</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Message</th>
+                        <th>Car ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.phone }}</td>
+                        <td>{{ contact.message }}</td>
+                        <td>{{ contact.car_id }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">No bookings have been made.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

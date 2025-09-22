@@ -1,0 +1,54 @@
+<!-- Pruthviraj Mundargi pm935@drexel.edu -->
+<!-- Saivinay Rayala sr3674@drexel.edu -->
+<!-- CS530: DUI, Assignment 1 -->
+{% extends 'base.html' %}
+{% set active = "Home" %}
+
+{% block title %}
+Home - Davangere Motors
+{% endblock %}
+
+{% block content %}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Welcome to Davangere Motors</h1>
+        <p class="lead text-muted">Explore our featured luxury and performance cars.</p>
+    </div>
+</section>
+
+<section class="featured-cars mt-4">
+    <div class="container">
+        <h2>Featured Cars</h2>
+        <div class="row">
+            {% for car in featured_cars %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ car.image }}" alt="{{ car.make }} {{ car.model }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
+                        <p class="card-text">
+                            Year: {{ car['year'] }}<br>
+                            Model: {{ car['model'] }}<br>
+                            Categories: {{ car['body_styles'] | safe }}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="{{ url_for('car_details', car_id=car['id']) }}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                <a href="{{ url_for('book_test_drive', car_id=car.id) }}" class="btn btn-sm btn-outline-secondary">Book Test Drive</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <p>No featured cars available at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% include 'about_section.html' %}
+
+{% endblock %}
+

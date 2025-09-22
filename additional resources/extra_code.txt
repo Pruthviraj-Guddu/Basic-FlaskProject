@@ -1,0 +1,18 @@
+ bike_data = [
+        {
+            "id": bike[0],
+            "name": bike[1],
+            "motor": bike[2],
+            "size": bike[3],
+            "folding": bike[4],
+            "image": f"static/img/bikes/{bike[6]}",
+            "available": bike[7]
+        }
+        for bike in bike_data
+    ]
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+    

@@ -1,0 +1,61 @@
+<!-- D:\Documents\Drexel\CS530-ProjectCars\templates\inventory.html -->
+{% extends 'base.html' %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Car Inventory</h2>
+    <div class="row" id="carList">
+        <!-- Initial set of cars -->
+        {% for car in cars %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ car.image }}" alt="{{ car.make }} {{ car.model }}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ car.make }} {{ car.model }} ({{ car.year }})</h5>
+                    <p class="card-text">Body Styles: {{ car.body_styles }}</p>
+                    <div class="btn-group">
+                        <a href="{{ url_for('car_details', car_id=car['id']) }}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                        <a href="{{ url_for('book_test_drive', car_id=car.id) }}" class="btn btn-sm btn-outline-secondary">Book Test Drive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let start = 15;
+    window.onscroll = function() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            fetch(`/inventory/cars?start=${start}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.cars.forEach(car => {
+                        const carElement = document.createElement('div');
+                        carElement.classList.add('col-md-4', 'mb-4');
+                        
+                        carElement.innerHTML = `
+                            <div class="card">
+                                <img src="${car.image}" alt="${car.make} ${car.model}" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title">${car.make} ${car.model} (${car.year})</h5>
+                                    <p class="card-text">Body Styles: ${car.body_styles}</p>
+                                </div>
+                            </div>`;
+                            
+                        document.getElementById('carList').appendChild(carElement);
+                    });
+                    start += 15;
+                })
+                .catch(error => console.error('Error loading more cars:', error));
+        }
+    };
+});
+</script>
+{% endblock %}

@@ -1,0 +1,66 @@
+/*Pruthviraj Mundargi pm935@drexel.edu */
+/* CS530: DUI, Assignment 1 */
+
+body {
+    font-family: "Avenir";
+    font-size: 1rem;
+    background: #fffefe;
+}
+
+header {
+    background: #dfeef6;
+}
+
+.btn-primary {
+    background: #dd3446;
+    border-color: #DE7C00;
+}
+
+.btn-primary:hover {
+    background: #971B2F;
+    border-color: #DE7C00;
+}
+
+.btn-secondary {
+    background: #c0c0c0;
+    border-color: #DE7C00;
+}
+
+.btn-secondary:hover {
+    background: #971B2F;
+    border-color: #DE7C00;
+}
+
+
+.navbar-expand-md .navbar-nav .nav-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: #FFC600;
+}
+
+.content {
+    padding: 2rem 1.5rem;
+}
+
+.jumbotron {
+    padding: 1.5rem;
+    background: 0;
+}
+
+.jumbotron img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+table img {
+    max-width: 100px;
+}
+
+.unavailable {
+    opacity: 0.25;
+}
+
+.card-img-top{
+    max-width: 100%;;
+    height: auto;
+}
+

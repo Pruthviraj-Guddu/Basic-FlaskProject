@@ -1,0 +1,18 @@
+<!-- D:\Documents\Drexel\CS530-ProjectCars\templates\book_test_drive.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+Book a Test Drive
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Book a Test Drive for {{ car.make }} {{ car.model }}</h2>
+    {% include '_booking_form.html' %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/book_test_drive.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,56 @@
+<!-- Pruthviraj Mundargi pm935@drexel.edu -->
+<!-- CS530: DUI, Assignment 1 -->
+{% extends 'base.html' %}
+{% set active = "Bikes" %}
+
+{% block title %}
+Our Bikes
+{% endblock %}
+
+{% block content %}
+
+<section class="jumbotron">
+    <div class="text-center">
+        <h1 class="jumbotron-heading">Our Bikes</h1>
+        <p class="lead text-muted">Four wheels move the body; two wheels move the soul!</p>
+    </div>
+</section>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Size</th>
+                <th scope="col">Availability</th>
+                <th scope="col">Folding</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bike in bike_data %}
+                <tr>
+                    <td><img src="{{ bike.image }}" alt="{{ bike.name }}" style="max-width: 100px;"></td>
+                    <td>{{ bike.name }}</td>
+                    <td>{{ bike.size }}</td>
+                    <td>
+                        {% if bike.available > 0 %}
+                        {{ bike.available }}
+                        {% else %}
+                           unavailable
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if bike.folding > 0 %}
+                            YES
+                        {% else %}
+                           NO
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

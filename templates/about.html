@@ -1,0 +1,18 @@
+<!-- Pruthviraj Mundargi pm935@drexel.edu -->
+<!-- CS530: DUI, Assignment 1 -->
+<!-- D:\Documents\Drexel\CS530-ProjectCars\templates\about.html -->
+
+{% extends 'base.html' %}
+{% set active = "About" %}
+
+{% block title %}
+About Us
+{% endblock %}
+
+{% block content %}
+{% include 'about_section.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/book_test_drive.js') }}"></script>
+{% endblock %}

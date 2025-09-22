@@ -1,0 +1,32 @@
+<!-- templates/car_details.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}{{ car.make }} {{ car.model }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Car details on the left -->
+        <div class="col-md-6">
+            <h2>{{ car.make }} {{ car.model }} ({{ car.year }})</h2>
+            <p><strong>Year:</strong> {{ car.year }}</p>
+            <p><strong>Model:</strong> {{ car.model }}</p>
+            <p><strong>Body Styles:</strong> {{ car.body_styles }}</p>
+            <!-- Add more details as needed -->
+            <h5 class="mt-4">Schedule an Appointment</h5>
+            {% include '_booking_form.html' %}
+        </div>
+
+        <!-- Car image on the right -->
+        <div class="col-md-6">
+            <img src="{{ car.image }}" alt="{{ car.make }} {{ car.model }}" class="img-fluid">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/book_test_drive.js') }}"></script>
+{% endblock %}
+

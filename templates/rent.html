@@ -1,0 +1,53 @@
+<!-- Pruthviraj Mundargi pm935@drexel.edu -->
+<!-- CS530: DUI, Assignment 2 -->
+
+{% extends 'base.html' %}
+{% set active = "Rent" %}
+
+{% block title %}
+Rent a bike
+{% endblock %}
+
+{% block content %}
+
+<section class="jumbotron">
+    <div class="text-center">
+        <h1 class="jumbotron-heading">Rent a Bike</h1>
+        <p class="lead text-muted">Four wheels move the body; two wheels move the soul!</p>
+    </div>
+</section>
+
+<div class="container">
+    <table id="bike-table" class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Availability</th>
+                <th scope="col"><button id="reset-button" class="btn btn-sm btn-primary">Reset</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bike in bike_data %}
+                <tr {% if bike.available == 0 %}class="unavailable"{% endif %}>
+                    <td><img src="{{ bike.image }}" alt="{{ bike.name }}" style="max-width: 100px;"></td>
+                    <td>{{ bike.name }}</td>
+                    <td>{{ bike.available }}</td>
+                    <td>
+                        {% if bike.available > 0 %}
+                            <button class="btn btn-sm btn-primary plus-button">+</button>
+                        {% else %}
+                            <button class="btn btn-sm btn-secondary" disabled>Not Available</button>
+                        {% endif %}
+                        <button class="btn btn-sm btn-danger minus-button" {% if bike.available == 0 %}disabled{% endif %} data-id="{{ bike.id }}">-</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            <script src="/static/js/rentView.js"></script>
+        </tbody>
+    </table>
+    
+</div>
+
+{% endblock %}
+
