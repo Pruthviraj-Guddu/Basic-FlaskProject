@@ -1,99 +1,55 @@
-Project developed in class CS530
-Pruthviraj Mundargi pm935@drexel.edu
-Saivinay Rayala sr3674@drexel.edu
-
-*Technologies Used*
-Frontend: HTML5, CSS3 (Bootstrap), JavaScript (jQuery)
-Backend: Python with Flask framework
-Database: SQLite
-Version Control: Git
 
 
-To create database use 
+# 🚗 Wroom – Web Application
+
+A simple web application built using Flask for the backend and a Bootstrap-powered frontend. Data is managed using SQLite.
+
+---
+
+## 🛠 Technologies Used
+
+* **Frontend**: HTML5, CSS3 (Bootstrap), JavaScript (jQuery)
+* **Backend**: Python with Flask
+* **Database**: SQLite
+* **Version Control**: Git
+
+---
+
+## 🗄️ Setting Up the Database
+
+To create the SQLite database, run the following command in your terminal:
+
+```bash
 sqlite3 wroom.db < create_db.sql
+```
 
-To run the app
+This will create a `wroom.db` file using the schema defined in `create_db.sql`.
+
+---
+
+## 🚀 Running the Application
+
+To start the Flask application, simply run:
+
+```bash
 python3 run.py
+```
 
+Then navigate to `http://localhost:5000` in your browser.
 
+---
 
+## 📁 Project Structure (optional)
 
+You might consider adding this section if helpful:
 
+```
+├── static/
+├── templates/
+├── create_db.sql
+├── run.py
+├── wroom.db
+├── README.md
+```
 
-
-# to host it on tux (view the raw of readme as it may lose formating due to git )
-scp -r ./CS530\ ProjectCars pm935@tux.cs.drexel.edu:~/public_html/uwsgi
-
-mv "/home/pm935/public_html/uwsgi/CS530 ProjectCars" /home/pm935/public_html/uwsgi/CS530ProjectCars
-
-
-
-
-
-
-mkdir -p ~/public_html/uwsgi
-
-
-
-
-scp -r ./your_site_directory username@tux.cs.drexel.edu:~/public_html/uwsgi
-
-
-
-
-
-
-
-
-cd ~/public_html/uwsgi
-pm935@tux4:~/public_html/uwsgi$ python3 -m venv env
-pm935@tux4:~/public_html/uwsgi$ source env/bin/activate
-(env) pm935@tux4:~/public_html/uwsgi$ pip install uwsgi
-
-
-(env) pm935@tux4:~/public_html/uwsgi$ pip install flask
-(env) pm935@tux4:~/public_html/uwsgi$ ip addr show
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-   link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-   inet 127.0.0.1/8 scope host lo
-      valid_lft forever preferred_lft forever
-2: ens18: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-   link/ether d6:f7:0e:b8:45:86 brd ff:ff:ff:ff:ff:ff
-   altname enp0s18
-   inet 10.246.251.14/22 brd 10.246.251.255 scope global ens18
-      valid_lft forever preferred_lft forever
-   inet6 fe80::d4f7:eff:feb8:4586/64 scope link 
-      valid_lft forever preferred_lft forever
-
-
-
-
-
-
-#content in site.ini
-
-
-[uwsgi]
-module = run:app
-chdir = /home/pm935/public_html/uwsgi/CS530ProjectCars
-virtualenv = /home/pm935/public_html/uwsgi/env/
-logger = file:/home/pm935/public_html/uwsgi/env.log
-# process-related settings
-master = True
-# maximum number of worker processes
-processes = 4
-# the socket (use the full path to be safe)
-http-socket = 10.246.251.14:93
-# clear environment on exit
-vacuum = True
-
-
-
-(env) pm935@tux4:~/public_html/uwsgi$ touch site.ini
-(env) pm935@tux4:~/public_html/uwsgi$ nano site.ini 
-(env) pm935@tux4:~/public_html/uwsgi$ rm site.ini 
-(env) pm935@tux4:~/public_html/uwsgi$ touch site.ini
-(env) pm935@tux4:~/public_html/uwsgi$ nano site.ini 
-(env) pm935@tux4:~/public_html/uwsgi$ 
-(env) pm935@tux4:~/public_html/uwsgi$ uwsgi --ini site.ini
-[uWSGI] getting INI configuration from site.ini
+---
